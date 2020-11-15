@@ -21,9 +21,9 @@
 
 3. 点击添加-App，选择刚安装好的应用-添加
 
-   ![Apple Configurator 2](./image/Apple Configurator 2.png)
+   ![Apple Configurator 2](./image/Apple_Configurator_2.png)
 
-   ![add app](./image/add app.png)
+   ![add app](./image/add_app.png)
 
 4. 点击添加后，会将该App重新添加到手机上，由于手机上已经安装了该app，此时会提示是否替换该app，先不点击任何按钮，打开一个Finder，(快捷键shift+command+G)，进入
     '~/Library/Group Containers/K36BKF7T3D.group.com.apple.configurator/Library/Caches/Assets/TemporaryItems/MobileApps/',
@@ -49,7 +49,7 @@
 
 3. 获取砸壳应用的Bundle id：输入命令 ps -e，记录下此时的bundle路径
 
-   ![bundle id](./image/bundle id.png)
+   ![bundle id](./image/bundle_id.png)
 
 4. 用Cycript找出微信的Documents的路径，输入命令cycript -p WeChat，记录下此时的Document路径
 
@@ -65,7 +65,7 @@
 
    scp 源文件路径 目标文件路径 。具体如下：
 
-   ![scp dumpdecrypted](./image/scp dumpdecrypted.png)
+   ![scp dumpdecrypted](./image/scp_dumpdecrypted.png)
 
 7. 开始砸壳，dumpdecrypted.dylib的具体用法是：DYLD_INSERT_LIBRARIES=/PathFrom/dumpdecrypted.dylib /PathTo
 
@@ -73,7 +73,7 @@
 
    这样就代表砸壳成功了，当前目录下会生成砸壳后的文件，即WeChat.decrypted。在Mac终端上，同样用scp命令把WeChat.decrypted文件拷贝到电脑上,接下来我们要正式的dump微信的可执行文件了。
 
-   ![scp wechat](./image/scp wechat.png)
+   ![scp wechat](./image/scp_wechat.png)
 
 ## 注入
 
@@ -87,13 +87,13 @@
 
 ### 新建framework工程
 
-![new framework](./image/new framework.png)
+![new framework](./image/new_framework.png)
 
 ### 搭建自动重签名脚本运行环境
 
-![new script](./image/new script.png)
+![new script](./image/new_script.png)
 
-![script shell](./image/script shell.png)
+![script shell](./image/script_shell.png)
 
 加入以下脚本代码
 
@@ -172,7 +172,7 @@ fi
 
 new group命名为APP并将已砸壳的ipa文件放入文件夹
 
-![new group APP](./image/new group APP.png)
+![new group APP](./image/new_group_APP.png)
 
 ###编写hook代码
 
