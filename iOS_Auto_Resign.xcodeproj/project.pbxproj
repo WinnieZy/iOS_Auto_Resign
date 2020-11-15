@@ -14,7 +14,34 @@
 		75B87D8325617BD600415B83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75B87D8225617BD600415B83 /* Assets.xcassets */; };
 		75B87D8625617BD600415B83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75B87D8425617BD600415B83 /* LaunchScreen.storyboard */; };
 		75B87D8925617BD600415B83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B87D8825617BD600415B83 /* main.m */; };
+		75B87D99256183CD00415B83 /* WeHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B87D97256183CD00415B83 /* WeHook.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75B87D9C256183CD00415B83 /* WeHook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B87D95256183CC00415B83 /* WeHook.framework */; };
+		75B87D9D256183CD00415B83 /* WeHook.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75B87D95256183CC00415B83 /* WeHook.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		75B87D9A256183CD00415B83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75B87D6B25617BD200415B83 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75B87D94256183CC00415B83;
+			remoteInfo = WeHook;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		75B87DA1256183CD00415B83 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				75B87D9D256183CD00415B83 /* WeHook.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		75B87D7325617BD200415B83 /* iOS_Auto_Resign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_Auto_Resign.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,10 +56,21 @@
 		75B87D8525617BD600415B83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75B87D8725617BD600415B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75B87D8825617BD600415B83 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		75B87D95256183CC00415B83 /* WeHook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeHook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75B87D97256183CD00415B83 /* WeHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeHook.h; sourceTree = "<group>"; };
+		75B87D98256183CD00415B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		75B87D7025617BD200415B83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75B87D9C256183CD00415B83 /* WeHook.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75B87D92256183CC00415B83 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				75B87D7525617BD200415B83 /* iOS_Auto_Resign */,
+				75B87D96256183CD00415B83 /* WeHook */,
 				75B87D7425617BD200415B83 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				75B87D7325617BD200415B83 /* iOS_Auto_Resign.app */,
+				75B87D95256183CC00415B83 /* WeHook.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,7 +116,27 @@
 			path = iOS_Auto_Resign;
 			sourceTree = "<group>";
 		};
+		75B87D96256183CD00415B83 /* WeHook */ = {
+			isa = PBXGroup;
+			children = (
+				75B87D97256183CD00415B83 /* WeHook.h */,
+				75B87D98256183CD00415B83 /* Info.plist */,
+			);
+			path = WeHook;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		75B87D90256183CC00415B83 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75B87D99256183CD00415B83 /* WeHook.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		75B87D7225617BD200415B83 /* iOS_Auto_Resign */ = {
@@ -86,15 +146,35 @@
 				75B87D6F25617BD200415B83 /* Sources */,
 				75B87D7025617BD200415B83 /* Frameworks */,
 				75B87D7125617BD200415B83 /* Resources */,
+				75B87DA1256183CD00415B83 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				75B87D9B256183CD00415B83 /* PBXTargetDependency */,
 			);
 			name = iOS_Auto_Resign;
 			productName = iOS_Auto_Resign;
 			productReference = 75B87D7325617BD200415B83 /* iOS_Auto_Resign.app */;
 			productType = "com.apple.product-type.application";
+		};
+		75B87D94256183CC00415B83 /* WeHook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75B87D9E256183CD00415B83 /* Build configuration list for PBXNativeTarget "WeHook" */;
+			buildPhases = (
+				75B87D90256183CC00415B83 /* Headers */,
+				75B87D91256183CC00415B83 /* Sources */,
+				75B87D92256183CC00415B83 /* Frameworks */,
+				75B87D93256183CC00415B83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WeHook;
+			productName = WeHook;
+			productReference = 75B87D95256183CC00415B83 /* WeHook.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -105,6 +185,9 @@
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					75B87D7225617BD200415B83 = {
+						CreatedOnToolsVersion = 12.1;
+					};
+					75B87D94256183CC00415B83 = {
 						CreatedOnToolsVersion = 12.1;
 					};
 				};
@@ -123,6 +206,7 @@
 			projectRoot = "";
 			targets = (
 				75B87D7225617BD200415B83 /* iOS_Auto_Resign */,
+				75B87D94256183CC00415B83 /* WeHook */,
 			);
 		};
 /* End PBXProject section */
@@ -135,6 +219,13 @@
 				75B87D8625617BD600415B83 /* LaunchScreen.storyboard in Resources */,
 				75B87D8325617BD600415B83 /* Assets.xcassets in Resources */,
 				75B87D8125617BD200415B83 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75B87D93256183CC00415B83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +243,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		75B87D91256183CC00415B83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		75B87D9B256183CD00415B83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 75B87D94256183CC00415B83 /* WeHook */;
+			targetProxy = 75B87D9A256183CD00415B83 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		75B87D7F25617BD200415B83 /* Main.storyboard */ = {
@@ -294,6 +400,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U87P2ALR27;
 				INFOPLIST_FILE = iOS_Auto_Resign/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,6 +419,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U87P2ALR27;
 				INFOPLIST_FILE = iOS_Auto_Resign/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -319,6 +427,58 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.winnie.iOS-Auto-Resign";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		75B87D9F256183CD00415B83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = U87P2ALR27;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WeHook/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.winnie.WeHook;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		75B87DA0256183CD00415B83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = U87P2ALR27;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WeHook/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.winnie.WeHook;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -339,6 +499,15 @@
 			buildConfigurations = (
 				75B87D8D25617BD600415B83 /* Debug */,
 				75B87D8E25617BD600415B83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75B87D9E256183CD00415B83 /* Build configuration list for PBXNativeTarget "WeHook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75B87D9F256183CD00415B83 /* Debug */,
+				75B87DA0256183CD00415B83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
