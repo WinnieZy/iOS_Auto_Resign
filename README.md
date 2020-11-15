@@ -174,7 +174,7 @@ new group命名为APP并将已砸壳的ipa文件放入文件夹
 
 ![new group APP](./image/new_group_APP.png)
 
-###编写hook代码
+### 编写hook代码
 
 根据头文件及需要修改的功能编写hook代码，示例如下：
 
@@ -283,4 +283,14 @@ new group命名为APP并将已砸壳的ipa文件放入文件夹
    ```
 
 ### 动态注入ipa
+
+工程编译后product中.app文件解压后，获取Mach-O可执行文件及Framework文件，通过yololib将framework注入APP文件夹下的已砸壳app，注入成功后重新编译运行工程，此时product中的.app文件已成功注入Framework文件及执行hook代码。
+
+未完待续。。
+
+## 参考资料
+
+[iOS逆向之自动化重签名](https://www.jianshu.com/p/30c1059879aa)
+
+[一步一步实现iOS微信自动抢红包(非越狱)](https://www.yinxiang.com/everhub/note/20b93ceb-8a6d-44f0-96fa-85bd8ba25abe)
 
