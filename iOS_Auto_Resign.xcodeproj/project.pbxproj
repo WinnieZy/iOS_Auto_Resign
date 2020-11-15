@@ -17,6 +17,10 @@
 		75B87D99256183CD00415B83 /* WeHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B87D97256183CD00415B83 /* WeHook.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B87D9C256183CD00415B83 /* WeHook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B87D95256183CC00415B83 /* WeHook.framework */; };
 		75B87D9D256183CD00415B83 /* WeHook.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75B87D95256183CC00415B83 /* WeHook.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		75B87DAE2561887700415B83 /* MoreTableHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B87DAC2561887700415B83 /* MoreTableHook.h */; };
+		75B87DAF2561887700415B83 /* MoreTableHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B87DAD2561887700415B83 /* MoreTableHook.m */; };
+		75B87DB3256189A300415B83 /* UILabel+HookSetText.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B87DB1256189A300415B83 /* UILabel+HookSetText.h */; };
+		75B87DB4256189A300415B83 /* UILabel+HookSetText.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B87DB2256189A300415B83 /* UILabel+HookSetText.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,10 @@
 		75B87D95256183CC00415B83 /* WeHook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeHook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B87D97256183CD00415B83 /* WeHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeHook.h; sourceTree = "<group>"; };
 		75B87D98256183CD00415B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75B87DAC2561887700415B83 /* MoreTableHook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreTableHook.h; sourceTree = "<group>"; };
+		75B87DAD2561887700415B83 /* MoreTableHook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreTableHook.m; sourceTree = "<group>"; };
+		75B87DB1256189A300415B83 /* UILabel+HookSetText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+HookSetText.h"; sourceTree = "<group>"; };
+		75B87DB2256189A300415B83 /* UILabel+HookSetText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+HookSetText.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,7 @@
 		75B87D6A25617BD200415B83 = {
 			isa = PBXGroup;
 			children = (
+				75B87DA82561874B00415B83 /* APP */,
 				75B87D7525617BD200415B83 /* iOS_Auto_Resign */,
 				75B87D96256183CD00415B83 /* WeHook */,
 				75B87D7425617BD200415B83 /* Products */,
@@ -121,8 +130,19 @@
 			children = (
 				75B87D97256183CD00415B83 /* WeHook.h */,
 				75B87D98256183CD00415B83 /* Info.plist */,
+				75B87DAC2561887700415B83 /* MoreTableHook.h */,
+				75B87DAD2561887700415B83 /* MoreTableHook.m */,
+				75B87DB1256189A300415B83 /* UILabel+HookSetText.h */,
+				75B87DB2256189A300415B83 /* UILabel+HookSetText.m */,
 			);
 			path = WeHook;
+			sourceTree = "<group>";
+		};
+		75B87DA82561874B00415B83 /* APP */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				75B87D99256183CD00415B83 /* WeHook.h in Headers */,
+				75B87DB3256189A300415B83 /* UILabel+HookSetText.h in Headers */,
+				75B87DAE2561887700415B83 /* MoreTableHook.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +169,7 @@
 				75B87D7025617BD200415B83 /* Frameworks */,
 				75B87D7125617BD200415B83 /* Resources */,
 				75B87DA1256183CD00415B83 /* Embed Frameworks */,
+				75B87DA72561856800415B83 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -231,6 +254,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		75B87DA72561856800415B83 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n# ${SRCROOT} 为工程文件所在的目录\nTEMP_PATH=\"${SRCROOT}/Temp\"\n#资源文件夹,放三方APP的\nASSETS_PATH=\"${SRCROOT}/APP\"\n#ipa包路径\nTARGET_IPA_PATH=\"${ASSETS_PATH}/*.ipa\"\n\n\n\n#新建Temp文件夹\nrm -rf \"$TEMP_PATH\"\nmkdir -p \"$TEMP_PATH\"\n\n# --------------------------------------\n# 1. 解压IPA 到Temp下\nunzip -oqq \"$TARGET_IPA_PATH\" -d \"$TEMP_PATH\"\n# 拿到解压的临时APP的路径\nTEMP_APP_PATH=$(set -- \"$TEMP_PATH/Payload/\"*.app;echo \"$1\")\n# 这里显示打印一下 TEMP_APP_PATH变量\necho \"TEMP_APP_PATH: $TEMP_APP_PATH\"\n\n# -------------------------------------\n# 2. 把解压出来的.app拷贝进去\n#BUILT_PRODUCTS_DIR 工程生成的APP包路径\n#TARGET_NAME target名称\nTARGET_APP_PATH=\"$BUILT_PRODUCTS_DIR/$TARGET_NAME.app\"\necho \"TARGET_APP_PATH: $TARGET_APP_PATH\"\n\nrm -rf \"$TARGET_APP_PATH\"\nmkdir -p \"$TARGET_APP_PATH\"\ncp -rf \"$TEMP_APP_PATH/\" \"$TARGET_APP_PATH/\"\n\n# -------------------------------------\n# 3. 为了是重签过程简化，移走extension和watchAPP. 此外个人免费的证书没办法签extension\n\necho \"Removing AppExtensions\"\nrm -rf \"$TARGET_APP_PATH/PlugIns\"\nrm -rf \"$TARGET_APP_PATH/Watch\"\n\n# -------------------------------------\n# 4. 更新 Info.plist 里的BundleId\n#  设置 \"Set :KEY Value\" \"目标文件路径.plist\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleIdentifier $PRODUCT_BUNDLE_IDENTIFIER\" \"$TARGET_APP_PATH/Info.plist\"\n\n# 5.给可执行文件上权限\n#添加ipa二进制的执行权限,否则xcode会告知无法运行\n#这个操作是要找到第三方app包里的可执行文件名称，因为info.plist的 'Executable file' key对应的是可执行文件的名称\n#我们grep 一下,然后取最后一行, 然后以cut 命令分割，取出想要的关键信息。存到APP_BINARY变量里\nAPP_BINARY=`plutil -convert xml1 -o - $TARGET_APP_PATH/Info.plist|grep -A1 Exec|tail -n1|cut -f2 -d\\>|cut -f1 -d\\<`\n\n\n#这个为二进制文件加上可执行权限 +X\nchmod +x \"$TARGET_APP_PATH/$APP_BINARY\"\n\n\n\n# -------------------------------------\n# 6. 重签第三方app Frameworks下已存在的动态库\nTARGET_APP_FRAMEWORKS_PATH=\"$TARGET_APP_PATH/Frameworks\"\nif [ -d \"$TARGET_APP_FRAMEWORKS_PATH\" ];\nthen\n#遍历出所有动态库的路径\nfor FRAMEWORK in \"$TARGET_APP_FRAMEWORKS_PATH/\"*\ndo\necho \"🍺🍺🍺🍺🍺🍺FRAMEWORK : $FRAMEWORK\"\n#签名\n/usr/bin/codesign --force --sign \"$EXPANDED_CODE_SIGN_IDENTITY\" \"$FRAMEWORK\"\ndone\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		75B87D6F25617BD200415B83 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -247,6 +290,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75B87DAF2561887700415B83 /* MoreTableHook.m in Sources */,
+				75B87DB4256189A300415B83 /* UILabel+HookSetText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
