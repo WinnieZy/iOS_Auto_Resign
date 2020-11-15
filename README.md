@@ -65,7 +65,7 @@
 
    scp 源文件路径 目标文件路径 。具体如下：
 
-   ![scp dumpdecrypted2](./image/scp dumpdecrypted.png)
+   ![scp dumpdecrypted](./image/scp dumpdecrypted.png)
 
 7. 开始砸壳，dumpdecrypted.dylib的具体用法是：DYLD_INSERT_LIBRARIES=/PathFrom/dumpdecrypted.dylib /PathTo
 
@@ -73,7 +73,7 @@
 
    这样就代表砸壳成功了，当前目录下会生成砸壳后的文件，即WeChat.decrypted。在Mac终端上，同样用scp命令把WeChat.decrypted文件拷贝到电脑上,接下来我们要正式的dump微信的可执行文件了。
 
-   ![scp wechat](/Users/winnieyzhou/Documents/winnieyzhou的同步盘/学习资料/iOS逆向/image/scp wechat.png)
+   ![scp wechat](./image/scp wechat.png)
 
 ## 注入
 
@@ -91,7 +91,7 @@
 
 ### 搭建自动重签名脚本运行环境
 
-![new script](/Users/winnieyzhou/Documents/winnieyzhou的同步盘/学习资料/iOS逆向/image/new script.png)
+![new script](./image/new script.png)
 
 ![script shell](./image/script shell.png)
 
@@ -172,7 +172,7 @@ fi
 
 new group命名为APP并将已砸壳的ipa文件放入文件夹
 
-![new group APP](/Users/winnieyzhou/Documents/winnieyzhou的同步盘/学习资料/iOS逆向/image/new group APP.png)
+![new group APP](./image/new group APP.png)
 
 ###编写hook代码
 
