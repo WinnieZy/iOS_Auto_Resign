@@ -1,3 +1,7 @@
+
+
+[TOC]
+
 # iOS逆向笔记
 
 ## 工具
@@ -74,6 +78,14 @@
    这样就代表砸壳成功了，当前目录下会生成砸壳后的文件，即WeChat.decrypted。在Mac终端上，同样用scp命令把WeChat.decrypted文件拷贝到电脑上,接下来我们要正式的dump微信的可执行文件了。
 
    ![scp wechat](./image/scp_wechat.png)
+   
+8. 验证是否砸壳成功，cryptid=0即为砸壳成功
+
+   ```shell
+   $ otool -l 应用名.decrypted | grep crypt
+   ```
+
+   ![otool](./image/otool.png)
 
 ## 注入
 
@@ -85,11 +97,29 @@
 
 ![class-dump](./image/class-dump.png)
 
-### 新建framework工程
+### 新建hook工程
+
+**创建hook framework**
 
 ![new framework](./image/new_framework.png)
 
-### 搭建自动重签名脚本运行环境
+### 自动注入并重签名Framework编译环境搭建
+
+**new group命名为APP并将已砸壳的ipa文件放入文件夹**
+
+![new group APP](./image/new_group_APP.png)
+
+**实现Framework编译后自动copy进app包**
+
+![copy_framework](./image/copy_framework.png)
+
+![drag_framework](./image/drag_framework.png)
+
+**编译yololib并将可执行文件放入系统目录下**（用于将Framework注入Mach-O文件）
+
+获取[yololib](https://github.com/KJCracks/yololib)最新源码并编译，将Product中生成的yololib可执行文件复制到 */usr/local/bin*路径下
+
+**添加编译脚本实现自动注入Framework及重签名**
 
 ![new script](./image/new_script.png)
 
@@ -153,6 +183,10 @@ APP_BINARY=`plutil -convert xml1 -o - $TARGET_APP_PATH/Info.plist|grep -A1 Exec|
 #这个为二进制文件加上可执行权限 +X
 chmod +x "$TARGET_APP_PATH/$APP_BINARY"
 
+#动态注入的framework，需修改为对应注入framework名称
+INJECT_FRAMEWORK_PATH="Frameworks/WeHook.framework/WeHook"
+yololib "$TARGET_APP_PATH/$APP_BINARY" "$INJECT_FRAMEWORK_PATH"
+echo "inject success"
 
 
 # -------------------------------------
@@ -170,13 +204,9 @@ done
 fi
 ```
 
-new group命名为APP并将已砸壳的ipa文件放入文件夹
-
-![new group APP](./image/new_group_APP.png)
-
 ### 编写hook代码
 
-根据头文件及需要修改的功能编写hook代码，示例如下：
+根据dump出来的头文件分析需要hook的功能，编写hook代码，示例如下：
 
 1. 修改某ViewController中的某方法
 
@@ -282,15 +312,17 @@ new group命名为APP并将已砸壳的ipa文件放入文件夹
    @end
    ```
 
-### 动态注入ipa
+## 重签名
 
-工程编译后product中.app文件解压后，获取Mach-O可执行文件及Framework文件，通过yololib将framework注入APP文件夹下的已砸壳app，注入成功后重新编译运行工程，此时product中的.app文件已成功注入Framework文件及执行hook代码。
+使用本地证书对ipa进行重签名
 
-未完待续。。
+未完待续。。。
 
 ## 参考资料
 
 [iOS逆向之自动化重签名](https://www.jianshu.com/p/30c1059879aa)
 
 [一步一步实现iOS微信自动抢红包(非越狱)](https://www.yinxiang.com/everhub/note/20b93ceb-8a6d-44f0-96fa-85bd8ba25abe)
+
+[iOS逆向之代码注入(framework)](https://www.cnblogs.com/WinJayQ/p/9032739.html)
 
