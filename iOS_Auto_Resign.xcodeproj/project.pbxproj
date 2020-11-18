@@ -16,7 +16,7 @@
 		75B87D8925617BD600415B83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B87D8825617BD600415B83 /* main.m */; };
 		75B87D99256183CD00415B83 /* WeHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B87D97256183CD00415B83 /* WeHook.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75B87D9C256183CD00415B83 /* WeHook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B87D95256183CC00415B83 /* WeHook.framework */; };
-		75B87D9D256183CD00415B83 /* WeHook.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75B87D95256183CC00415B83 /* WeHook.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		75B87D9D256183CD00415B83 /* WeHook.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75B87D95256183CC00415B83 /* WeHook.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		75B87DAE2561887700415B83 /* MoreTableHook.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B87DAC2561887700415B83 /* MoreTableHook.h */; };
 		75B87DAF2561887700415B83 /* MoreTableHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B87DAD2561887700415B83 /* MoreTableHook.m */; };
 		75B87DB3256189A300415B83 /* UILabel+HookSetText.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B87DB1256189A300415B83 /* UILabel+HookSetText.h */; };
@@ -40,7 +40,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				75B87D9D256183CD00415B83 /* WeHook.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				75B87D9D256183CD00415B83 /* WeHook.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
