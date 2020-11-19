@@ -86,16 +86,10 @@
    ```
 
    ![otool](./image/otool.png)
+   
+9. 当应用内存在其它Plugins时，需要一一对Plugin中的可执行文件进行砸壳，按照以上步骤重复操作，此处不再赘述。
 
 ## 注入
-
-### dump微信可执行文件
-
-从Github上下载最新的class-dump源代码，然后用Xcode编译即可生成class-dump(这里比较简单，笔者就不详细说明了)。
-
-使用class-dump命令,把刚刚砸壳后的WeChat.decrypted,导出其中的头文件。./class-dump -s -S -H ./WeChat.decrypted -o ./WeChatHeader
-
-![class-dump](./image/class-dump.png)
 
 ### 新建hook工程
 
@@ -105,21 +99,21 @@
 
 ### 自动注入并重签名Framework编译环境搭建
 
-**new group命名为APP并将已砸壳的ipa文件放入文件夹**
+#### new group命名为APP并将已砸壳的ipa文件放入文件夹
 
 ![new group APP](./image/new_group_APP.png)
 
-**实现Framework编译后自动copy进app包**
+#### 实现Framework编译后自动copy进app包
 
 ![copy_framework](./image/copy_framework.png)
 
 ![drag_framework](./image/drag_framework.png)
 
-**编译yololib并将可执行文件放入系统目录下**（用于将Framework注入Mach-O文件）
+#### 编译yololib并将可执行文件放入系统目录下（用于将Framework注入Mach-O文件）
 
 获取[yololib](https://github.com/KJCracks/yololib)最新源码并编译，将Product中生成的yololib可执行文件复制到 */usr/local/bin*路径下
 
-**添加编译脚本实现自动注入Framework及重签名**
+#### 添加编译脚本实现自动注入Framework及重签名
 
 ![new script](./image/new_script.png)
 
@@ -128,6 +122,7 @@
 加入以下脚本代码
 
 ```shell
+# Type a script or drag a script file from your workspace to insert its path.
 
 # ${SRCROOT} 为工程文件所在的目录
 TEMP_PATH="${SRCROOT}/Temp"
@@ -165,7 +160,7 @@ cp -rf "$TEMP_APP_PATH/" "$TARGET_APP_PATH/"
 # 3. 为了是重签过程简化，移走extension和watchAPP. 此外个人免费的证书没办法签extension
 
 echo "Removing AppExtensions"
-rm -rf "$TARGET_APP_PATH/PlugIns"
+#rm -rf "$TARGET_APP_PATH/PlugIns" //付费开发者证书时可保留extension
 rm -rf "$TARGET_APP_PATH/Watch"
 
 # -------------------------------------
@@ -188,7 +183,6 @@ INJECT_FRAMEWORK_PATH="Frameworks/WeHook.framework/WeHook"
 yololib "$TARGET_APP_PATH/$APP_BINARY" "$INJECT_FRAMEWORK_PATH"
 echo "inject success"
 
-
 # -------------------------------------
 # 6. 重签第三方app Frameworks下已存在的动态库
 TARGET_APP_FRAMEWORKS_PATH="$TARGET_APP_PATH/Frameworks"
@@ -202,7 +196,44 @@ echo "🍺🍺🍺🍺🍺🍺FRAMEWORK : $FRAMEWORK"
 /usr/bin/codesign --force --sign "$EXPANDED_CODE_SIGN_IDENTITY" "$FRAMEWORK"
 done
 fi
+
+# 7. 重签第三方app下已存在的plugins
+TARGET_APP_PLUGINS_PATH="$TARGET_APP_PATH/PlugIns"
+if [ -d "$TARGET_APP_PLUGINS_PATH" ];
+then
+#遍历出所有plugins的路径
+for PLUGINS in "$TARGET_APP_PLUGINS_PATH/"*
+do
+echo "🍺🍺🍺🍺🍺🍺PLUGINS : $PLUGINS"
+
+# 1.给可执行文件上权限
+#添加ipa二进制的执行权限,否则xcode会告知无法运行
+#这个操作是要找到第三方app包里的可执行文件名称，因为info.plist的 'Executable file' key对应的是可执行文件的名称
+#我们grep 一下,然后取最后一行, 然后以cut 命令分割，取出想要的关键信息。存到APP_BINARY变量里
+APP_BINARY=`plutil -convert xml1 -o - $PLUGINS/Info.plist|grep -A1 Exec|tail -n1|cut -f2 -d\>|cut -f1 -d\<`
+
+# 这个为二进制文件加上可执行权限 +X
+chmod +x "$PLUGINS/$APP_BINARY"
+
+# -------------------------------------
+# 2. 更新 Info.plist 里的BundleId
+#  设置 "Set :KEY Value" "目标文件路径.plist"
+/usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier $PRODUCT_BUNDLE_IDENTIFIER.$APP_BINARY" "$PLUGINS/Info.plist"
+
+# 3.签名
+/usr/bin/codesign --force --sign "$EXPANDED_CODE_SIGN_IDENTITY" "$PLUGINS"
+done
+fi
+
 ```
+
+### dump微信可执行文件
+
+从Github上下载最新的class-dump源代码，然后用Xcode编译即可生成class-dump(这里比较简单，笔者就不详细说明了)。
+
+使用class-dump命令,把刚刚砸壳后的WeChat.decrypted,导出其中的头文件。./class-dump -s -S -H ./WeChat.decrypted -o ./WeChatHeader
+
+![class-dump](./image/class-dump.png)
 
 ### 编写hook代码
 
@@ -313,6 +344,12 @@ fi
    ```
 
 ## 重签名
+
+### XCode编译重签名
+
+<a href="#添加编译脚本实现自动注入Framework及重签名">添加编译脚本实现自动注入Framework及重签名</a>中的脚本文件已经支持XCode编译完成重签名（包括对Framework、plugin的处理）
+
+### 手动重签名
 
 使用本地证书对ipa进行重签名
 
